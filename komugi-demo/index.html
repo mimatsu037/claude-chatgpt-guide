@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>こむぎ｜週末の焼き菓子店</title>
+  <meta name="description" content="マドレーヌ、フィナンシェ、サブレ。週末だけの架空の焼き菓子店「こむぎ」のデモサイトです。">
+  <style>
+    :root {
+      color-scheme: light;
+      --cream: #fbf6ec;
+      --paper: #fffdf8;
+      --ink: #3f291e;
+      --muted: #685244;
+      --line: #dccbbb;
+      --sand: #efe2d1;
+      --serif: "Yu Mincho", "Hiragino Mincho ProN", "Noto Serif CJK JP", serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif;
+      font-size: 1rem;
+      line-height: 1.8;
+      overflow-wrap: anywhere;
+    }
+
+    h1, h2, h3, p, figure, dl, dd { margin: 0; }
+
+    h1, h2, h3 {
+      font-family: var(--serif);
+      line-height: 1.35;
+    }
+
+    .wrap {
+      width: min(68rem, 100%);
+      margin-inline: auto;
+      padding-inline: clamp(1.25rem, 5vw, 3rem);
+    }
+
+    .hero {
+      display: grid;
+      align-items: center;
+      gap: clamp(2rem, 5vw, 4rem);
+      padding-block: clamp(2.75rem, 8vw, 6.5rem);
+    }
+
+    .eyebrow {
+      color: var(--muted);
+      font-size: .875rem;
+      letter-spacing: .12em;
+    }
+
+    h1 {
+      margin-block: .25rem .75rem;
+      font-size: clamp(3.4rem, 10vw, 6rem);
+      letter-spacing: .08em;
+    }
+
+    .tagline {
+      font-family: var(--serif);
+      font-size: clamp(1.15rem, 4vw, 1.55rem);
+      line-height: 1.65;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: .9rem;
+      min-height: 3rem;
+      margin-block-start: 1.5rem;
+      padding: .65rem 1.2rem;
+      border-radius: .35rem;
+      background: var(--ink);
+      color: var(--paper);
+      font-size: .9375rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .button:hover { background: #624333; }
+
+    .button:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 4px;
+    }
+
+    .photo {
+      min-width: 0;
+      padding: .45rem;
+      border: 1px solid var(--line);
+      border-radius: .65rem;
+      background: var(--paper);
+    }
+
+    .photo img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: .35rem;
+    }
+
+    .menu {
+      border-block-start: 1px solid var(--line);
+      padding-block: clamp(2.25rem, 6vw, 4.5rem);
+    }
+
+    h2 { font-size: clamp(1.65rem, 5vw, 2.4rem); }
+
+    .sweets {
+      display: grid;
+      gap: .75rem;
+      margin: 1.25rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .sweets li {
+      min-width: 0;
+      padding: 1rem 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: .5rem;
+      background: var(--paper);
+    }
+
+    .sweets h3 { font-size: 1.2rem; }
+
+    .sweets p {
+      margin-block-start: .35rem;
+      color: var(--muted);
+      font-size: .9375rem;
+    }
+
+    #reserve {
+      scroll-margin-block-start: 1rem;
+      padding-block: clamp(2.25rem, 6vw, 4.5rem);
+      background: var(--sand);
+    }
+
+    .pickup {
+      display: grid;
+      gap: .5rem;
+      max-width: 30rem;
+      margin-block: 1.25rem;
+    }
+
+    .pickup div {
+      display: grid;
+      grid-template-columns: minmax(0, 6rem) minmax(0, 1fr);
+      gap: .75rem;
+      padding-block: .55rem;
+      border-block-end: 1px solid #cbb6a2;
+    }
+
+    .pickup dt { font-weight: 700; }
+
+    .demo {
+      color: var(--muted);
+      font-size: .875rem;
+    }
+
+    @media (min-width: 42rem) {
+      .sweets { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (min-width: 50rem) {
+      .hero { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      html { scroll-behavior: smooth; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="wrap hero" aria-labelledby="shop-title">
+      <div>
+        <p class="eyebrow">週末の焼き菓子店</p>
+        <h1 id="shop-title">こむぎ</h1>
+        <p class="tagline">週末のおやつに、<br>バターの香りを。</p>
+        <a class="button" href="#reserve">予約案内を見る <span aria-hidden="true">↓</span></a>
+      </div>
+      <figure class="photo">
+        <img src="bakes.png" alt="こんがり焼き上がった焼き菓子">
+      </figure>
+    </section>
+
+    <section class="wrap menu" aria-labelledby="menu-title">
+      <h2 id="menu-title">3つの焼き菓子</h2>
+      <ul class="sweets" role="list">
+        <li>
+          <h3>マドレーヌ</h3>
+          <p>ふんわりとした生地に、やさしいバターの香り。</p>
+        </li>
+        <li>
+          <h3>フィナンシェ</h3>
+          <p>焦がしバターが香る、しっとりとした焼き菓子。</p>
+        </li>
+        <li>
+          <h3>サブレ</h3>
+          <p>さくっと軽く、口の中でほろりとほどけます。</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="reserve" aria-labelledby="reserve-title">
+      <div class="wrap">
+        <h2 id="reserve-title">受け取り・予約案内</h2>
+        <dl class="pickup">
+          <div>
+            <dt>受け取り日</dt>
+            <dd>週末のみ（土・日）</dd>
+          </div>
+          <div>
+            <dt>お渡し方法</dt>
+            <dd>テイクアウト限定</dd>
+          </div>
+        </dl>
+        <p class="demo">これは架空店のデモです。実際のご予約は受け付けていません。</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

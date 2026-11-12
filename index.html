@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff8f3">
+  <meta name="description" content="Claude Codeが構成を決め、Codexが実装。焼き菓子店のデモHPで試す、みなの連携実践ガイド。">
+  <title>みな流 Claude×ChatGPT 連携実践ガイド</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="copy.js" defer></script>
+</head>
+<body>
+<main class="page" id="top">
+  <header class="hero">
+    <img class="guide-cover" src="assets/mina-bakery-cover.png" width="1254" height="1254" alt="みな流 Claude×ChatGPT 連携実践ガイド。焼き菓子店のデモHPを作る。">
+    <h1 class="sr-only">みな流 Claude×ChatGPT 連携実践ガイド</h1>
+    <a class="demo-button hero-demo-button" href="komugi-demo/">完成したデモHPを見る <span aria-hidden="true">→</span></a>
+    <section class="video-section" aria-labelledby="video-title">
+      <h2 id="video-title">連携の解説動画</h2>
+      <video class="walkthrough-clip" controls muted playsinline preload="none" poster="assets/claude-codex-quick-poster.png" data-play-in-view aria-label="Claude CodeとCodexの連携。Codexが動いた画面から、プラグイン追加と接続の操作を追う">
+        <source src="assets/claude-codex-quick.mp4" type="video/mp4">
+        <a href="assets/claude-codex-quick.mp4">解説動画を開く</a>
+      </video>
+      <div class="video-chapters" role="group" aria-label="実演動画の場面へ移動">
+        <button type="button" data-video-time="3.7">プラグイン追加</button>
+        <button type="button" data-video-time="7.6">接続を確認</button>
+        <button type="button" data-video-time="13.4">ChatGPTログイン</button>
+        <button type="button" data-video-time="18.1">連携できたか確認</button>
+      </div>
+      <a class="source" href="#install-video"><span class="keep">プラグイン追加から見る ↓</span></a>
+    </section>
+    <p class="intro"><span class="keep">構成はClaude、</span><span class="keep">手を動かすのはCodex。</span><span class="keep">焼き菓子店のHPで、</span><span class="keep">この役割分担を試してみます。</span></p>
+    <a class="profile" href="https://www.instagram.com/mina_ai_fukugyo/">
+      <img src="assets/mina-avatar.png" alt="" width="48" height="48">
+      <span><small>AI×SNSで在宅収入を叶える主婦</small><strong>みな</strong> <span class="handle">@mina_ai_fukugyo</span></span>
+    </a>
+    <a class="jump" href="#practice">作例のプロンプトへ ↓</a>
+  </header>
+
+  <section class="section worries" aria-labelledby="worries-title">
+    <h2 id="worries-title"><span class="keep">こんな気持ち、</span><span class="keep">ありませんか？</span></h2>
+    <ul>
+      <li><span aria-hidden="true">💭</span><p><span class="keep">AIは2つ使っているけど、</span><span class="keep">どっちに何を頼むか迷う。</span></p></li>
+      <li><span aria-hidden="true">💭</span><p><span class="keep">下書きはできるのに、</span><span class="keep">見直しまで手が回らない。</span></p></li>
+      <li><span aria-hidden="true">💭</span><p><span class="keep">子どもが寝たあと、</span><span class="keep">短い時間で作業を進めたい。</span></p></li>
+    </ul>
+  </section>
+
+  <section class="section story" aria-labelledby="story-title">
+    <div class="story-card">
+      <img src="assets/my-story-banner.png" alt="MY STORY 私もずっと、仕方ないと思っていました。">
+      <h2 id="story-title"><span class="keep">私も、家事と育児で</span><span class="keep">一日が終わっていました</span></h2>
+      <p><span class="keep">専業主婦だった頃は、</span><span class="keep">AIを仕事に使うなんて</span><span class="keep">思ってもいませんでした。</span><span class="keep">子どもが寝てからの</span><span class="keep">わずかな時間が、</span><span class="keep">私の作業時間でした。</span></p>
+      <p><span class="keep">今は、考えるところと</span><span class="keep">手を動かすところを</span><span class="keep">AIに分けて頼んでいます。</span><span class="keep">私が決めるのは、</span><span class="keep">何を作るかと、</span><span class="keep">出来上がりをどうするか。</span></p>
+      <p class="story-callout"><span class="keep">まずは、やりかけの作業を</span><span class="keep">ひとつ選んでみてください。</span></p>
+    </div>
+  </section>
+
+  <section class="section benefits" id="line-benefits" aria-labelledby="benefits-title">
+    <p class="eyebrow keep">ここから先はLINE登録者限定 🎁</p>
+    <h2 id="benefits-title"><span class="keep">『おうちワーク</span><span class="keep">始め方ガイド』</span><span class="title-line"><span class="keep">5大特典を</span><span class="keep">無料プレゼント中</span></span></h2>
+    <a class="line-banner" href="https://mimatsu037.github.io/line-link/" aria-label="LINEに登録して5大特典を受け取る"><img src="assets/line-benefits-cta.jpg" alt="AIマネタイズの教科書｜タップしてLINEで5大特典を受け取る"></a>
+    <p><span class="keep">家事や育児の合間に、</span><span class="keep">AIでできる仕事を探すなら。</span><span class="keep">仕事の選び方から発信まで、</span><span class="keep">最初に迷いやすいところを</span><span class="keep"><strong>『AIマネタイズの教科書』</strong>に</span><span class="keep">まとめました。</span></p>
+    <div class="benefit-list">
+      <h3>登録でもらえる5大特典</h3>
+      <ol>
+        <li><span class="keep">AIマネタイズの選び方</span><p><span class="keep">時間と得意なことから、</span><span class="keep">自分に合う仕事を探す。</span></p></li>
+        <li><span class="keep">ChatGPTで使える</span><span class="keep">収益化プロンプト集</span><p><span class="keep">アイデア出しや発信に</span><span class="keep">使える指示文を紹介。</span></p></li>
+        <li><span class="keep">AIマネタイズの</span><span class="keep">実践テンプレート</span><p><span class="keep">次にやることを</span><span class="keep">迷わず決めるための型。</span></p></li>
+        <li><span class="keep">収益化に役立つ</span><span class="keep">生成AIツール3選</span><p><span class="keep">作業に合わせた</span><span class="keep">ツールの使い分け。</span></p></li>
+        <li><span class="keep">AI×SNSで収益につながった</span><span class="keep">実践事例</span><p><span class="keep">実際に何を試し、</span><span class="keep">どう改善したかが分かる。</span></p></li>
+      </ol>
+    </div>
+    <aside class="after">
+      <h3>登録後に分かること</h3>
+      <p><span class="keep">自分の得意なことや</span><span class="keep">使える時間に合わせて、</span><span class="keep">どの仕事から試すか、</span><span class="keep">何をAIに任せるかを</span><span class="keep">整理できます。</span></p>
+    </aside>
+    <p class="note"><span class="keep">画像をタップすると、</span><span class="keep">LINE登録ページが開きます。</span><span class="keep">特典の内容や配布期間は</span><span class="keep">変更される場合があります。</span></p>
+  </section>
+  <section class="section roles" aria-labelledby="roles-title">
+    <h2 id="roles-title"><span class="keep">献立と料理みたいに、</span><span class="keep">考える役と作る役を分ける</span></h2>
+    <figure class="guide-figure role-work-photo">
+      <img src="assets/mina-pc-mascots.jpg" width="1536" height="1024" loading="lazy" alt="パソコンを操作するみなの横顔。画面では緑のCodexが料理し、コーラル色のClaude Codeが献立を考えている。">
+    </figure>
+    <div class="ai-pair cooking-roles">
+      <div><span class="keep"><img src="assets/codex.png" alt="" width="26" height="26"> Codex</span><p>料理する</p></div>
+      <div><span class="keep"><img src="assets/claude-code.png" alt="" width="26" height="26"> Claude Code</span><p>献立を考える</p></div>
+    </div>
+    <p class="roles-example"><span class="keep">HPづくりでは、</span><span class="keep">Claude Codeが構成を考え、</span><span class="keep">Codexがページを作ります。</span></p>
+  </section>
+
+  <section class="section finished-example" id="demo" aria-labelledby="sample-title">
+    <div class="section-heading">
+      <p class="eyebrow">今回つくるもの</p>
+      <h2 id="sample-title"><span class="keep">焼き菓子店「こむぎ」の</span><span class="keep">デモHP</span></h2>
+    </div>
+    <a class="demo-preview" href="komugi-demo/" aria-label="焼き菓子店こむぎの完成したデモHPを開く">
+      <img src="assets/komugi-desktop.png" width="1100" height="645" loading="lazy" alt="実際にブラウザで表示した、焼き菓子店こむぎのホームページ。">
+    </a>
+    <a class="demo-button" href="komugi-demo/">完成したデモHPを開く <span aria-hidden="true">→</span></a>
+    <p class="section-lead"><span class="keep">HPを開いたら、</span><span class="keep">「予約案内を見る」を</span><span class="keep">押してみてください。</span><span class="keep">架空のお店の練習用ページです。</span></p>
+    <details class="script-notebook">
+      <summary>HPの設計ノート</summary>
+      <div class="notebook-paper">
+        <h3 class="notebook-title"><span class="keep">お店の紹介から</span><span class="keep">予約案内まで</span></h3>
+        <ol class="notebook-entries">
+          <li><h4>最初の画面</h4><p><span class="keep">写真と店名で雰囲気を伝え、</span><span class="keep">予約案内のボタンを置く。</span></p></li>
+          <li><h4>焼き菓子の紹介</h4><p><span class="keep">マドレーヌ、フィナンシェ、</span><span class="keep">サブレの3種類を並べる。</span></p></li>
+          <li><h4>予約・受け取りの案内</h4><p><span class="keep">冒頭のボタンから</span><span class="keep">同じページ内の案内へ移動。</span></p></li>
+        </ol>
+      </div>
+    </details>
+  </section>
+
+  <section class="section" id="setup" aria-labelledby="setup-title">
+    <div class="section-heading">
+      <p class="eyebrow">パソコンで一緒にやってみよう</p>
+      <h2 id="setup-title"><span class="keep">Claude CodeとCodexを</span><span class="keep">つなぐ3STEP</span></h2>
+    </div>
+    <p class="section-lead"><span class="keep">Windowsで試した手順です。</span><span class="keep">Claude Code、</span><span class="keep">Node.js 18.18以上、</span><span class="keep">ChatGPTアカウントを用意します。</span></p>
+    <a class="source" href="https://code.claude.com/docs/en/quickstart" target="_blank" rel="noopener noreferrer"><span class="keep">Claude Codeを入れる</span><span class="keep">公式手順 ↗</span></a>
+    <ol class="steps">
+      <li class="card">
+        <h3><span><span class="keep">Windowsターミナルで</span><span class="keep">追加する</span></span></h3>
+        <div id="install-video">
+          <p><span class="keep">Windowsターミナルを</span><span class="keep">作業フォルダで開き、</span><span class="keep">上から1行ずつ実行します。</span></p>
+          <div class="snippet"><code id="terminal-marketplace">claude plugin marketplace add openai/codex-plugin-cc --scope local</code><button type="button" data-copy="terminal-marketplace" aria-label="ターミナル用の追加コマンドをコピー">コピー</button></div>
+          <div class="snippet"><code id="terminal-install">claude plugin install codex@openai-codex --scope local</code><button type="button" data-copy="terminal-install" aria-label="ターミナル用のインストールコマンドをコピー">コピー</button></div>
+          <p><span class="keep"><code>claude plugin list</code> で</span><span class="keep">Codexが <code>enabled</code> なら</span><span class="keep">追加できています。</span></p>
+          <figure class="recorded-screen installed-screen">
+            <img src="assets/recorded-plugin-enabled.png" width="365" height="200" loading="lazy" alt="実際の claude plugin list の結果。codex@openai-codex が Scope: local、Status: enabled と表示された。">
+            <figcaption><span class="keep">実行結果の抜粋。</span><span class="keep"><code>local</code> は作業フォルダに適用。</span></figcaption>
+          </figure>
+          <video class="install-clip" controls muted playsinline preload="none" data-play-in-view aria-label="プラグインの追加と再ログインが必要な場合の操作録画">
+            <source src="assets/claude-codex-install.mp4" type="video/mp4">
+            <a href="assets/claude-codex-install.mp4">実演動画を開く</a>
+          </video>
+        </div>
+      </li>
+      <li class="card">
+        <h3>Claude Codeを開く</h3>
+        <p><span class="keep">同じターミナルで</span><span class="keep">Claude Codeを起動します。</span></p>
+        <div class="snippet"><code id="launch-claude">claude</code><button type="button" data-copy="launch-claude" aria-label="Claude Codeの起動コマンドをコピー">コピー</button></div>
+        <p><span class="keep">すでに起動している場合は、</span><span class="keep">下のコマンドで読み込みます。</span></p>
+        <div class="snippet"><code id="reload">/reload-plugins</code><button type="button" data-copy="reload" aria-label="再読み込みコマンドをコピー">コピー</button></div>
+      </li>
+      <li class="card">
+        <h3>Codexの接続を確認</h3>
+        <div class="snippet"><code id="connect">/codex:setup</code><button type="button" data-copy="connect" aria-label="接続確認コマンドをコピー">コピー</button></div>
+        <figure class="recorded-screen">
+          <a href="assets/recorded-bakery-ready.png" target="_blank" rel="noopener">
+            <img src="assets/recorded-bakery-ready.png" width="600" height="35" loading="lazy" alt="Codex setup check complete — it's ready to use と表示された実行画面。">
+          </a>
+          <figcaption><span class="keep"><code>ready to use</code> が出たら、</span><span class="keep">接続の準備は完了。</span></figcaption>
+        </figure>
+        <details class="help auth-help">
+          <summary><span class="keep">Claudeのログイン期限が</span><span class="keep">切れていた場合</span></summary>
+          <p><span class="keep"><code>OAuth session expired</code></span><span class="keep">と出たら、ターミナルで</span><span class="keep">Claudeに再ログインします。</span></p>
+          <figure class="recorded-screen">
+            <a href="assets/recorded-claude-auth-expired.png" target="_blank" rel="noopener">
+              <img src="assets/recorded-claude-auth-expired.png" width="905" height="32" loading="lazy" alt="接続を試したときの表示。Failed to authenticate: OAuth session expired and could not be refreshed.">
+            </a>
+            <figcaption>実際のエラー表示。タップで拡大。</figcaption>
+          </figure>
+          <div class="snippet"><code id="claude-login">claude auth login</code><button type="button" data-copy="claude-login" aria-label="Claudeの再ログインコマンドをコピー">コピー</button></div>
+          <p><span class="keep">ブラウザでログインしたら、</span><span class="keep">同じ作業フォルダで</span><span class="keep"><code>/codex:setup</code> をやり直します。</span></p>
+          <a class="source" href="https://code.claude.com/docs/en/cli-reference" target="_blank" rel="noopener noreferrer">Claude Codeのログイン手順 ↗</a>
+        </details>
+        <details class="help windows-cli-help">
+          <summary><span class="keep">WindowsでCodexを</span><span class="keep">起動できないとき</span></summary>
+          <p><span class="keep"><code>Exec format error</code> が出たら、</span><span class="keep">Git Bashで次のコマンドを試します。</span></p>
+          <div class="snippet"><code id="codex-version">codex --version</code><button type="button" data-copy="codex-version" aria-label="Codex CLIのバージョン確認コマンドをコピー">コピー</button></div>
+          <p><span class="keep">バージョンが出なければ、</span><span class="keep">公式のWindows用CLIを用意し、</span><span class="keep">Git Bashで起動できる状態にします。</span><span class="keep">その後、Claude Codeを開き直し、</span><span class="keep"><code>/codex:setup</code> を実行します。</span></p>
+          <a class="source" href="https://github.com/openai/codex#quickstart" target="_blank" rel="noopener noreferrer"><span class="keep">Codex CLIの</span><span class="keep">公式インストール手順 ↗</span></a>
+        </details>
+        <p><span class="keep">Codexが未導入なら、</span><span class="keep">表示された案内に沿って</span><span class="keep">インストールします。</span></p>
+        <p><span class="keep">Codex側が未ログインなら、</span><span class="keep">次のコマンドを実行し、</span><span class="keep">ChatGPTにログインします。</span></p>
+        <div class="snippet"><code id="login">!codex login</code><button type="button" data-copy="login" aria-label="ログインコマンドをコピー">コピー</button></div>
+        <p><span class="keep">ログイン後は</span><span class="keep"><code>/codex:setup</code>を再実行し、</span><span class="keep">準備できたことを確認します。</span></p>
+      </li>
+    </ol>
+    <a class="source" href="https://github.com/openai/codex-plugin-cc" target="_blank" rel="noopener noreferrer"><span class="keep">OpenAIのプラグイン</span><span class="keep">公式手順 ↗</span></a>
+  </section>
+
+  <section class="section prompt-section" id="practice" aria-labelledby="prompt-title">
+    <div class="section-heading">
+      <h2 id="prompt-title">焼き菓子店のHPを作る</h2>
+    </div>
+    <ol class="practice-prep">
+      <li><span class="keep">作業フォルダ内に</span><span class="keep"><code>komugi-demo</code> を作ります。</span></li>
+      <li><a class="source" href="komugi-demo/bakes.png" download="bakes.png">練習用の写真を保存 ↓</a><span class="keep"><code>bakes.png</code> の名前で</span><span class="keep">そのフォルダに入れます。</span></li>
+      <li><span class="keep">下の指示文をコピーし、</span><span class="keep">Claude Codeの入力欄へ。</span></li>
+    </ol>
+    <details class="prompt-card">
+      <summary><span class="keep">デモHPを作る</span><span class="keep">プロンプト</span></summary>
+      <div class="prompt-bar"><button type="button" data-copy="prompt" aria-label="デモHPを作るプロンプトをコピー">全文をコピー</button></div>
+      <pre id="prompt" class="prompt-text">架空の焼き菓子店「こむぎ」の、スマホ向け1ページHPを作りたいです。週末に<span class="keep">マドレーヌ</span>、<span class="keep">フィナンシェ</span>、<span class="keep">サブレ</span>をテイクアウトできるお店という設定です。
+
+まず<span class="keep">Claude Code</span>で、お店の雰囲気、初めての人に伝えること、ページを読む順番、予約案内への導線を短く設計してください。その設計を表示したら、<span class="keep">codex:codex-rescue</span> に <span class="keep">--wait</span> を付けて、下の条件と一緒に実装を依頼してください。
+
+・<span class="keep">komugi-demo/index.html</span> を作成。CSSはHTMLの中に書き、単体でブラウザ表示できるようにする
+・用意した焼き菓子の写真 <span class="keep">komugi-demo/bakes.png</span> を参照する。画像の差し替えや外部画像の取得は不要
+・クリーム色と焦げ茶を中心に、写真が映える素朴で上品なデザイン。日本語で読みやすくする
+・上から「お店の紹介」「3つの焼き菓子」「受け取り・予約案内」。冒頭の「予約案内を見る」ボタンは同じページの id="reserve" へ移動させる
+・架空店のデモだと分かる表示を入れ、実際の予約や外部サービスへの送信は行わない
+・幅390pxとPCで読めるレスポンシブな設計にし、見出しの切れや横スクロールが出ないようにする
+・既存ファイルは上書きしない。Codex側で書き込めない場合は、完成したHTML全文を結果として返し、<span class="keep">Claude Code</span>が同じ内容を保存する
+
+実装のあと、<span class="keep">Claude Code</span>はファイルを確認し、予約ボタンの移動先と、スマホで確認する点を教えてください。連携できなければ止まった場所を教えてください。</pre>
+    </details>
+    <figure class="recorded-screen handoff-screen">
+      <a href="assets/recorded-bakery-handoff.png" target="_blank" rel="noopener">
+        <img src="assets/recorded-bakery-handoff.png" width="560" height="102" loading="lazy" alt="Claude Codeからcodex:codex-rescueにデモHPの実装を渡した記録。">
+      </a>
+      <figcaption><span class="keep">Claude Codeが構成を決め、</span><span class="keep">CodexにHPの実装を依頼。</span></figcaption>
+    </figure>
+    <div class="save-note">
+      <h3><span class="keep">ブラウザで開いて、</span><span class="keep">ボタンを試す</span></h3>
+      <p><span class="keep"><code>komugi-demo</code> の中にある</span><span class="keep"><code>index.html</code> を開きます。</span><span class="keep">スマホ幅で横にはみ出さず、</span><span class="keep">ボタンを押すと予約案内に</span><span class="keep">移動すればOKです。</span></p>
+      <figure class="recorded-screen mobile-demo-screen">
+        <a href="assets/komugi-mobile.png" target="_blank" rel="noopener">
+          <img src="assets/komugi-mobile.png" width="390" height="725" loading="lazy" alt="390pxで開いたデモHP。焼き菓子の写真と予約案内ボタンが見える。">
+        </a>
+        <figcaption><span class="keep">実際にブラウザで確認した</span><span class="keep">スマホ幅の表示。</span></figcaption>
+      </figure>
+      <details class="help">
+        <summary><span class="keep">HTMLファイルが</span><span class="keep">作られないとき</span></summary>
+        <p><span class="keep">Codexの結果にHTMLがあり、</span><span class="keep">ファイルだけがないときは、</span><span class="keep">Claude Codeに保存を頼めます。</span></p>
+        <div class="snippet"><code id="save-fallback">Codexが返したHTMLをそのまま、komugi-demo/index.html に保存してください。同名ファイルがあれば上書き前に確認してください。</code><button type="button" data-copy="save-fallback" aria-label="デモHPの保存指示をコピー">コピー</button></div>
+      </details>
+    </div>
+    <details class="help">
+      <summary>作業が止まったとき</summary>
+      <p><span class="keep"><code>/codex:setup</code> で接続を確認。</span><span class="keep">作業中の状態を知りたいときは</span><span class="keep"><code>/codex:status</code> を試します。</span></p>
+    </details>
+  </section>
+
+  <section class="section plan" aria-labelledby="plan-title">
+    <div class="section-heading">
+      <p class="eyebrow">忙しい日は途中で区切ってOK</p>
+      <h2 id="plan-title"><span class="keep">すきま時間で進める</span><span class="keep">3日プラン</span></h2>
+    </div>
+    <figure class="guide-figure plan-photo">
+      <img src="assets/mina-pc-front.jpg" width="1536" height="1024" loading="lazy" alt="ノートPCのキーボードを打つみなを斜め正面から見たイメージ。">
+    </figure>
+    <ol>
+      <li><strong>1日目</strong><p><span class="keep">連携を済ませ、</span><span class="keep">接続まで確認する。</span></p></li>
+      <li><strong>2日目</strong><p><span class="keep">写真を用意して、</span><span class="keep">デモHPの実装を頼む。</span></p></li>
+      <li><strong>3日目</strong><p><span class="keep">スマホ幅で開き、</span><span class="keep">予約案内のボタンを試す。</span></p></li>
+    </ol>
+  </section>
+
+  <section class="section finish" aria-labelledby="finish-title">
+    <div class="section-heading">
+      <h2 id="finish-title">最初の1件を進めるチェック</h2>
+    </div>
+    <fieldset class="checklist">
+      <legend>できたところにチェック</legend>
+      <p class="check-progress" role="status">0 / 3 完了</p>
+      <label><input type="checkbox" name="connected"><span><span class="keep">STEP 1〜3を進め、</span><span class="keep">Codexの接続を確認した</span></span></label>
+      <label><input type="checkbox" name="requested"><span><span class="keep">作りたいものを1つ決めて、</span><span class="keep">プロンプトを送った</span></span></label>
+      <label><input type="checkbox" name="reviewed"><span><span class="keep">HPを開いて、</span><span class="keep">予約案内への移動を確認した</span></span></label>
+    </fieldset>
+  </section>
+
+  <section class="section openchat" id="openchat" aria-labelledby="openchat-title">
+    <p class="eyebrow">Instagramだけでは伝えきれない</p>
+    <h2 id="openchat-title"><span class="keep">AI×SNSの話を、</span><span class="keep">もっと詳しく</span></h2>
+    <p class="openchat-name"><span class="keep">無料オープンチャット</span><span class="title-line keep">「みな AI×SNS活用術」</span></p>
+    <p class="next-work"><span class="keep">デモHPができたら、</span><span class="keep">自分の紹介ページにも応用。</span><span class="keep">試して分かったことは</span><span class="keep">オプチャでもシェアしています。</span></p>
+    <div class="benefit-list">
+      <h3>オプチャで発信すること</h3>
+      <ul>
+        <li><span class="keep">AIを使って試した仕事の進め方</span></li>
+        <li><span class="keep">SNS投稿に取り入れた工夫</span></li>
+        <li><span class="keep">うまくいかなかったことと改善例</span></li>
+      </ul>
+    </div>
+    <a class="line-banner" href="https://line.me/ti/g2/-iZ9LBnhq6PqtsV0tf52ID7_K5QNRmfn5Hqesg?utm_source=invitation&amp;utm_medium=link_copy&amp;utm_campaign=default" aria-label="無料オープンチャット みな AI×SNS活用術に参加する"><img src="assets/openchat-mina-ai-sns.jpg" alt="みな AI×SNS活用術｜オープンチャットに参加する"></a>
+    <p class="note"><span class="keep">画像をタップすると</span><span class="keep">オープンチャットが開きます。</span></p>
+  </section>
+  <footer>
+    <a href="https://www.instagram.com/mina_ai_fukugyo/">Instagram @mina_ai_fukugyo</a>
+    <p>みな｜AI×SNSで在宅収入を叶える主婦</p>
+    <p>© 2026 みな. All Rights Reserved.</p>
+  </footer>
+</main>
+<div class="sr-only" role="status" id="copy-status"></div>
+</body>
+</html>
